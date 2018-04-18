@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="GNSSLogger_NMEA-Analyzer">
+  <ClassDiagramComponents>
+    <Class name="Controlador" package="Controlador" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="analise" type="Analise" visibility="package" isStatic="true"/>
+        <Field name="uniqueInstance" type="Controlador" visibility="private" isStatic="true"/>
+        <Field name="fileNameLOG" type="String" visibility="private" isStatic="true"/>
+        <Field name="fileNameNMEA" type="String" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="Controlador" visibility="public" isStatic="true" isSynchronized="true"/>
+        <Method name="abrirLog" returnType="boolean" visibility="public">
+          <Argument type="String" name="caminhoArquivo"/>
+        </Method>
+        <Method name="abrirMedicoesProcessadas" returnType="boolean" visibility="public">
+          <Argument type="String" name="caminhoArquivo"/>
+        </Method>
+        <Method name="possuiLogAberto" returnType="boolean" visibility="public"/>
+        <Method name="possuiNMEAAberto" returnType="boolean" visibility="public"/>
+        <Method name="getMedicoesBrutas" returnType="Resultado" visibility="public"/>
+        <Method name="getMedicoesProcessadas" returnType="Resultado" visibility="public"/>
+        <Method name="getComparacaoGPGGA" returnType="ArrayList&lt;ResultadoComparacaoGPGGA&gt;" visibility="public"/>
+        <Method name="getGPGGAbrutas" returnType="Resultado" visibility="public"/>
+        <Method name="getGPGGAprocessadas" returnType="Resultado" visibility="public"/>
+        <Method name="getPGLOR" returnType="Resultado" visibility="public"/>
+        <Method name="getGPGSV" returnType="Resultado" visibility="public"/>
+        <Method name="getGLGSV" returnType="Resultado" visibility="public"/>
+        <Method name="getBDGSV" returnType="Resultado" visibility="public"/>
+        <Method name="getGPGSA" returnType="Resultado" visibility="public"/>
+        <Method name="getGNGSA" returnType="Resultado" visibility="public"/>
+        <Method name="getQZGSA" returnType="Resultado" visibility="public"/>
+        <Method name="getIMGSA" returnType="Resultado" visibility="public"/>
+        <Method name="getBDGSA" returnType="Resultado" visibility="public"/>
+        <Method name="getGAGSA" returnType="Resultado" visibility="public"/>
+        <Method name="getGPRMC" returnType="Resultado" visibility="public"/>
+      </Methods>
+    </Class>
+    <Enum name="Tipos_Operacoes" package="Controlador" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Literals>
+        <Literal name="NONE"/>
+        <Literal name="MEDICOES_BRUTAS"/>
+        <Literal name="MEDICOES_PROCESSADAS"/>
+        <Literal name="$GPGGA_Brutas"/>
+        <Literal name="$GPGGA_Processadas"/>
+        <Literal name="$PGLOR"/>
+        <Literal name="$GPGSV"/>
+        <Literal name="$GLGSV"/>
+        <Literal name="$BDGSV"/>
+        <Literal name="$GPGSA"/>
+        <Literal name="$GNGSA"/>
+        <Literal name="$QZGSA"/>
+        <Literal name="$IMGSA"/>
+        <Literal name="$BDGSA"/>
+        <Literal name="$GAGSA"/>
+        <Literal name="$GPRMC"/>
+      </Literals>
+    </Enum>
+    <Class name="Analise" package="Modelo" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="NUM_MEDICOES" type="int" visibility="private"/>
+        <Field name="leituraMedicoes" type="boolean" visibility="private"/>
+        <Field name="caminhoArquivoLOG" type="String" visibility="private"/>
+        <Field name="medicoesNMEA" type="ArrayList&lt;String&gt;" visibility="private"/>
+        <Field name="medicoesGPGGAbrutas" type="ArrayList&lt;String&gt;" visibility="private"/>
+        <Field name="medicoesGPGGAprocessadas" type="ArrayList&lt;String&gt;" visibility="private"/>
+        <Field name="medicoesProcessadas" type="ArrayList&lt;String&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="caminhoArquivoLog"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="extrairMedicoesGPGGA_brutas" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="extrairMedicoesGPGGA_processadas" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="extrairGPGGA_brutas" returnType="boolean" visibility="private"/>
+        <Method name="extrairGPGGA_processadas" returnType="void" visibility="private"/>
+        <Method name="extrairMedicaoBruta" returnType="ArrayList&lt;String&gt;" visibility="public">
+          <Argument type="String" name="tipoNMEA"/>
+        </Method>
+        <Method name="abrirArquivoProcessado" returnType="ArrayList&lt;String&gt;" visibility="public">
+          <Argument type="String" name="nomeArquivo"/>
+        </Method>
+        <Method name="extrairMedicoesBrutas" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="extrairMedicoesProcessadas" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="compararMedicoesGPGGA" returnType="ArrayList&lt;ResultadoComparacaoGPGGA&gt;" visibility="public"/>
+        <Method name="lerLogFile" returnType="void" visibility="public">
+          <Argument type="String" name="caminhoArquivo"/>
+        </Method>
+        <Method name="lerNMEAprocessada" returnType="void" visibility="private">
+          <Argument type="String" name="arquivoTeste"/>
+        </Method>
+        <Method name="salvarTXT" returnType="boolean" visibility="public">
+          <Argument type="String" name="caminhoArquivo"/>
+        </Method>
+        <Method name="isInteger" returnType="boolean" visibility="public">
+          <Argument type="String" name="input"/>
+        </Method>
+        <Method name="isFloat" returnType="boolean" visibility="public">
+          <Argument type="String" name="input"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Principal" package="" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GUI_Principal" package="Visao" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="fileNameLOG" type="String" visibility="private"/>
+        <Field name="fileNameNMEA" type="String" visibility="private"/>
+        <Field name="btnAbrirLog" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnAbrirLog1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jButton1" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jMenu1" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jMenu3" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="jMenuBar1" type="javax.swing.JMenuBar" visibility="private"/>
+        <Field name="menuCompararGPGGA" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairBDGSA" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairBDGSV" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairGAGSA" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairGLGSV" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairGNGSA" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairGPGGAbrutas" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairGPGGAprocessadas" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairGPGSA" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairGPGSV" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairGPRMC" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairIMGSA" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairPGLOR" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuExtrairQZGSA" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuOpenLog" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuOpenNMEA" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuShowNMEApvt" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="menuShowNMEAraw" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="txtLog" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txtNMEA" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="abrirArquivo" returnType="String" visibility="private">
+          <Argument type="String" name="extensao"/>
+          <Argument type="String" name="titulo"/>
+          <Argument type="String" name="filtro"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="menuOpenLogActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairGPGGAbrutasActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuOpenNMEAActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairPGLORActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairGPGSVActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairGLGSVActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairBDGSVActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairGPGSAActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairGNGSAActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairQZGSAActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairIMGSAActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairBDGSAActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairGAGSAActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairGPRMCActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuShowNMEApvtActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuShowNMEArawActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuExtrairGPGGAprocessadasActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnAbrirLogActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="menuCompararGPGGAActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnAbrirLog1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="jButton1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GUI_Resultado" package="Visao" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="flag_conteudo" type="boolean" visibility="private"/>
+        <Field name="Lista" type="javax.swing.JList&lt;String&gt;" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="lblTitulo" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="java.awt.Frame" name="parent"/>
+          <Argument type="boolean" name="modal"/>
+          <Argument type="Tipos_Operacoes" name="operacao"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+        <Method name="carregarValores" returnType="void" visibility="private">
+          <Argument type="Tipos_Operacoes" name="operacao"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GUI_Resultado_Tabela" package="Visao" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="flag_conteudo" type="boolean" visibility="private"/>
+        <Field name="model" type="DefaultTableModel" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="tabela" type="javax.swing.JTable" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="java.awt.Frame" name="parent"/>
+          <Argument type="boolean" name="modal"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="verificarArquivosAbertos" returnType="boolean" visibility="private"/>
+        <Method name="carregarValores" returnType="void" visibility="private"/>
+        <Method name="setarTabela" returnType="void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Principal" package="Visao" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="Visao.GUI_Resultado" target="Controlador.Tipos_Operacoes" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="uniqueInstance" source="Controlador.Controlador" target="Controlador.Controlador" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="analise" source="Controlador.Controlador" target="Modelo.Analise" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Controlador.Controlador" target="Controlador.Controlador" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
